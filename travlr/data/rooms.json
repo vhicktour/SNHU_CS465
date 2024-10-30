@@ -1,0 +1,23 @@
+[
+    {
+        "code": "R101",
+        "name": "Deluxe Suite",
+        "description": "A luxurious suite with ocean view, private balcony, and a king-size bed.",
+        "rate": "299.99",
+        "image": "deluxe.jpg"
+    },
+    {
+        "code": "R102",
+        "name": "Standard Room",
+        "description": "A comfortable room with all the essentials and a beautiful garden view.",
+        "rate": "149.99",
+        "image": "standard.jpg"
+    },
+    {
+        "code": "R103",
+        "name": "Family Room",
+        "description": "Spacious room with two queen-size beds, perfect for families.",
+        "rate": "199.99",
+        "image": "family.jpg"
+    }
+]
