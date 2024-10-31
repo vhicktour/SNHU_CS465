@@ -17,7 +17,11 @@
                             <ul id="sites">
                                 {{#each trips}}
                                 <li>
-                                    <a href="/travel/{{this.code}}"><img src="images/{{this.image}}" alt="{{this.name}}"></a>
+                                    <!-- Link image to the API endpoint for JSON data -->
+                                    <a href="/api/trips/{{this.code}}">
+                                        <img src="images/{{this.image}}" alt="{{this.name}}">
+                                    </a>
+                                    <!-- Link name to a readable travel page if required -->
                                     <h2><a href="/travel/{{this.code}}">{{this.name}}</a></h2>
                                     <p><strong>Duration:</strong> {{this.length}}</p>
                                     <p><strong>Start Date:</strong> {{this.start}}</p>
