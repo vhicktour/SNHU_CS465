@@ -1,33 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div id="background">
         <div id="page">
+            <!-- Header Partial -->
             {{> header meals="meals"}}
-            <div id="contents">
-                <div class="box">
-                    <div class="body">
-                        <h1>Meals</h1>
-                        <ul id="foods">
+
+            <main id="contents">
+                <section class="meals-section">
+                    <div class="container">
+                        <h1>Our Meals</h1>
+                        <ul class="meals-list">
                             {{#each meals}}
-                            <li>
-                                <h2>{{this.name}}</h2>
-                                <div class="infos">
-                                    <a href="/meals"><img src="images/{{this.image}}" alt="Meal Image"></a>
-                                    <p><span>{{this.subtitle}}</span> {{this.description}}</p>
-                                    <span class="price">Price: ${{this.price}}</span>
+                            <li class="meal-item">
+                                <h2 class="meal-name">{{this.name}}</h2>
+                                <div class="meal-content">
+                                    <a href="/meals/{{this.id}}" class="meal-image-link">
+                                        <img src="images/{{this.image}}" alt="{{this.name}} Image" class="meal-image">
+                                    </a>
+                                    <div class="meal-details">
+                                        <p class="meal-subtitle"><strong>{{this.subtitle}}</strong></p>
+                                        <p class="meal-description">{{this.description}}</p>
+                                        <span class="meal-price">Price: ${{this.price}}</span>
+                                    </div>
                                 </div>
                             </li>
                             {{/each}}
                         </ul>
                     </div>
-                </div>
-            </div>
+                </section>
+            </main>
+
+            <!-- Footer Partial -->
             {{> footer}}
         </div>
     </div>

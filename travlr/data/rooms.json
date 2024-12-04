@@ -1,23 +1,23 @@
 [
     {
         "code": "R101",
-        "name": "Deluxe Suite",
-        "description": "A luxurious suite with ocean view, private balcony, and a king-size bed.",
-        "rate": "299.99",
-        "image": "deluxe.jpg"
+        "name": "First Class Room",
+        "description": "Experience luxury at its finest in our First Class Room. This spacious 45m² sanctuary features elegant modern décor, a plush king-size bed, and floor-to-ceiling windows offering breathtaking city views. The marble bathroom includes a rain shower and deep soaking tub. Complimentary high-speed WiFi and 24-hour room service ensure a perfect stay.",
+        "rate": "220.00",
+        "image": "first-class.jpg"
     },
     {
         "code": "R102",
-        "name": "Standard Room",
-        "description": "A comfortable room with all the essentials and a beautiful garden view.",
-        "rate": "149.99",
-        "image": "standard.jpg"
+        "name": "Deluxe Room",
+        "description": "Our Deluxe Room offers sophisticated comfort in a 35m² space. Featuring contemporary furnishings, a comfortable queen-size bed, and large windows with scenic views. The well-appointed bathroom comes with premium amenities. Perfect for both business and leisure travelers, the room includes a work desk, high-speed internet, and flat-screen TV.",
+        "rate": "150.00",
+        "image": "deluxe.jpg"
     },
     {
         "code": "R103",
-        "name": "Family Room",
-        "description": "Spacious room with two queen-size beds, perfect for families.",
-        "rate": "199.99",
-        "image": "family.jpg"
+        "name": "Suite Room",
+        "description": "Indulge in the ultimate luxury of our 60m² Suite Room. This premium accommodation features a separate living area, bedroom with a king-size bed, and a private balcony. The spacious marble bathroom includes both a rainfall shower and standalone bathtub. Enjoy exclusive access to our executive lounge, personalized concierge service, and premium in-room amenities.",
+        "rate": "180.00",
+        "image": "suite.jpg"
     }
 ]
