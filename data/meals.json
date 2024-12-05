@@ -1,0 +1,26 @@
+[
+    {
+        "code": "M201",
+        "name": "SeaFood Special",
+        "subtitle": "Fried Salmon Special",
+        "description": "Indulge in our Fried Salmon Special, featuring succulent salmon fillets perfectly seasoned and crispy on the outside while tender and flaky inside. Served with a side of fresh garden vegetables and a tangy lemon butter sauce, this dish is a seafood lover's dream.",
+        "price": "39.99",
+        "image": "seafoods.jpg"
+    },
+    {
+        "code": "M202",
+        "name": "Sumptuous Desserts",
+        "subtitle": "Choco Ice Cream Sandwich",
+        "description": "Treat yourself to our Choco Ice Cream Sandwich, a decadent dessert that combines rich chocolate ice cream sandwiched between two freshly baked chocolate chip cookies. Topped with a drizzle of chocolate fudge and a sprinkle of crushed nuts for an extra crunch.",
+        "price": "19.99",
+        "image": "desserts.jpg"
+    },
+    {
+        "code": "M203",
+        "name": "Buffet",
+        "subtitle": "Mixed Buffet",
+        "description": "Experience a culinary feast with our Mixed Buffet, offering a diverse selection of dishes to satisfy every palate. From savory appetizers and hearty main courses to a variety of salads and delectable desserts, our buffet ensures a delightful dining experience for all guests.",
+        "price": "49.99",
+        "image": "buffet.jpg"
+    }
+]

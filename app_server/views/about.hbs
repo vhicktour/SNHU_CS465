@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+    <div id="background">
+        <div id="page">
+            {{> header about="about"}}
+            <div id="contents">
+                <h1>About Us</h1>
+                <div id="about-content">
+                    {{{aboutContent}}}
+                </div>
+            </div>
+            {{> footer}}
+        </div>
+    </div>
+</body>
+</html>

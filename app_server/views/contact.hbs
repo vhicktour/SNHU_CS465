@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+    <div id="background">
+        <div id="page">
+            {{> header contact="contact"}}
+            <div id="contents">
+                <h1>Contact Us</h1>
+                <div id="contact-info">
+                    <p><strong>Phone:</strong> {{contact.phone}}</p>
+                    <p><strong>Email:</strong> {{contact.email}}</p>
+                    <p><strong>Address:</strong> {{contact.address}}</p>
+                </div>
+            </div>
+            {{> footer}}
+        </div>
+    </div>
+</body>
+</html>
