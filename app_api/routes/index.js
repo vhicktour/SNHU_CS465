@@ -3,16 +3,17 @@ const express = require('express');
 const router = express.Router();
 const tripsController = require('../controllers/trips');
 
-// Define route for our trips endpoint
+// Define route for listing and adding trips
 router
   .route('/trips')
-  .get(tripsController.tripsList)
-  .post(tripsController.tripsAddTrip); // Add the POST route
+  .get(tripsController.tripsList)   // GET all trips
+  .post(tripsController.tripsAddTrip); // POST a new trip
 
-// Route to get a single trip by `tripCode` and to update a trip
+// Define route for getting, updating, and deleting a single trip by `tripCode`
 router
   .route('/trips/:tripCode')
-  .get(tripsController.tripReadOne)
-  .put(tripsController.tripsUpdateTrip); // Add the PUT route
+  .get(tripsController.tripReadOne)    // GET a single trip
+  .put(tripsController.tripsUpdateTrip) // PUT (update) a trip
+  .delete(tripsController.tripsDeleteTrip); // DELETE a trip
 
 module.exports = router;

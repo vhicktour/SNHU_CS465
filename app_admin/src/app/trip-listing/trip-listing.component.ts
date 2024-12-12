@@ -28,6 +28,13 @@ export class TripListingComponent implements OnInit {
   public addTrip(): void {
     this.router.navigate(['add-trip']);
   }
+  
+  public onDelete(tripCode: string): void {
+    this.tripDataService.deleteTrip(tripCode).subscribe(() => {
+      console.log(`Trip with code ${tripCode} deleted successfully.`);
+      this.getStuff(); // Refresh the list of trips after deletion
+    });
+  }
 
   private getStuff(): void {
     this.tripDataService.getTrips().subscribe({

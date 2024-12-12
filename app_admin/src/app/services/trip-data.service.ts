@@ -30,4 +30,9 @@ export class TripDataService {
   updateTrip(formData: Trip): Observable<Trip> {
     return this.http.put<Trip>(`${this.url}/${formData.code}`, formData);
   }
+
+  // Delete an existing trip
+  deleteTrip(tripCode: string): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${tripCode}`);
+  }
 }

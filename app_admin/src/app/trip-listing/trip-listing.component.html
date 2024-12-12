@@ -4,6 +4,10 @@
 </div>
 <div class="row">
   <div *ngFor="let trip of trips" class="col-md-4">
-    <app-trip-card [trip]="trip" class="card-deck mt-2"></app-trip-card>
+    <app-trip-card 
+      [trip]="trip" 
+      (deleteRequested)="onDelete($event)"
+      class="card-deck mt-2">
+    </app-trip-card>
   </div>
 </div>
