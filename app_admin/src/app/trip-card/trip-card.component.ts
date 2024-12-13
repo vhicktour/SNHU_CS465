@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Trip } from '../models/trip';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-trip-card',
@@ -11,22 +12,26 @@ import { Trip } from '../models/trip';
   styleUrls: ['./trip-card.component.css']
 })
 export class TripCardComponent implements OnInit {
-  @Input() trip!: Trip; // Use proper typing instead of `any`
+  @Input() trip!: Trip;
   @Output() deleteRequested = new EventEmitter<string>();
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {}
 
   editTrip(trip: Trip): void {
-    // Store the trip code in localStorage
     localStorage.setItem('tripCode', trip.code);
-    // Navigate to the edit-trip component
     this.router.navigate(['/edit-trip']);
   }
 
   onDeleteTrip(): void {
-    // Emit the trip code so that the parent component can handle the actual deletion
     this.deleteRequested.emit(this.trip.code);
+  }
+
+  public isLoggedIn(): boolean {
+    return this.authenticationService.isLoggedIn();
   }
 }

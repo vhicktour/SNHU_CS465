@@ -4,11 +4,12 @@ import { Trip } from '../models/trip';
 import { TripDataService } from '../services/trip-data.service';
 import { TripCardComponent } from '../trip-card/trip-card.component'; 
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-trip-listing',
   standalone: true,
-  imports: [CommonModule, TripCardComponent], 
+  imports: [CommonModule, TripCardComponent],
   templateUrl: './trip-listing.component.html',
   styleUrls: ['./trip-listing.component.css'],
   providers: [TripDataService],
@@ -17,10 +18,10 @@ export class TripListingComponent implements OnInit {
   trips: Trip[] = [];
   message: string = '';
 
-  // Injecting Router in the constructor
   constructor(
     private tripDataService: TripDataService,
-    private router: Router // Added Router injection
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) {
     console.log('trip-listing constructor');
   }
@@ -30,10 +31,12 @@ export class TripListingComponent implements OnInit {
   }
   
   public onDelete(tripCode: string): void {
-    this.tripDataService.deleteTrip(tripCode).subscribe(() => {
-      console.log(`Trip with code ${tripCode} deleted successfully.`);
-      this.getStuff(); // Refresh the list of trips after deletion
-    });
+    if (this.isLoggedIn()) {
+      this.tripDataService.deleteTrip(tripCode).subscribe(() => {
+        console.log(`Trip with code ${tripCode} deleted successfully.`);
+        this.getStuff();
+      });
+    }
   }
 
   private getStuff(): void {
@@ -51,6 +54,10 @@ export class TripListingComponent implements OnInit {
         console.log('Error: ' + error);
       },
     });
+  }
+
+  public isLoggedIn(): boolean {
+    return this.authenticationService.isLoggedIn();
   }
 
   ngOnInit(): void {

@@ -14,17 +14,19 @@
     </p>
     <p class="card-text" [innerHTML]="trip.description"></p>
     
-    <!-- Delete Trip Button -->
-    <button class="btn btn-danger me-2" (click)="onDeleteTrip()">
-      Delete Trip
-    </button>
+    <div *ngIf="isLoggedIn()">
+      <!-- Delete Trip Button -->
+      <button class="btn btn-danger me-2" (click)="onDeleteTrip()">
+        Delete Trip
+      </button>
 
-    <!-- Edit Trip Button -->
-    <button
-      class="btn btn-primary"
-      (click)="editTrip(trip)"
-    >
-      Edit Trip
-    </button>
+      <!-- Edit Trip Button -->
+      <button
+        class="btn btn-primary"
+        (click)="editTrip(trip)"
+      >
+        Edit Trip
+      </button>
+    </div>
   </div>
 </div>

@@ -1,0 +1,11 @@
+.container {
+    margin-top: 20px;
+  }
+  
+  .form-group label {
+    margin-bottom: 0.5rem;
+  }
+  
+  .btn-primary {
+    width: 100px;
+  }

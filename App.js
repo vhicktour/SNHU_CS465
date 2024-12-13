@@ -3,27 +3,39 @@ const path = require('path');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config();
+console.log('JWT Secret is set:', !!process.env.JWT_SECRET);
 
 // Initialize Express
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Connect to MongoDB first
+require('./app_api/models/db');
+
+// Load models before passport configuration
+require('./app_api/models/user'); // Add this line to load the User model first
+
+// Initialize Passport after models are loaded
+const passport = require('passport');
+require('./app_api/config/passport');
+
 // Enable CORS with specific options
-app.use(cors({
-  origin: 'http://localhost:4200', // Allow Angular dev server
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept'], // Allowed headers
-  credentials: true // Allow credentials
-}));
+app.use(
+  cors({
+    origin: 'http://localhost:4200',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept'],
+    credentials: true,
+  })
+);
 
-// Parse JSON bodies
+// Parse JSON and URL-encoded bodies
 app.use(express.json());
-
-// Parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 
-// Connect to MongoDB via Mongoose (ensure MongoDB is running locally or configured to connect)
-require('./app_api/models/db');
+// Initialize Passport middleware
+app.use(passport.initialize());
 
 // Log MongoDB connection status
 mongoose.connection.on('connected', () => {
@@ -37,13 +49,14 @@ mongoose.connection.on('error', (err) => {
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 
-// Register partials
+// Register Handlebars partials
 hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
 
 // Serve static files from the 'public' folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Import app_server routes (frontend)
+// Import routes
+const apiRouter = require('./app_api/routes/index');
 const indexRouter = require('./app_server/routes/index');
 const roomsRouter = require('./app_server/routes/rooms');
 const travelRouter = require('./app_server/routes/travel');
@@ -52,8 +65,8 @@ const newsRouter = require('./app_server/routes/news');
 const contactRouter = require('./app_server/routes/contact');
 const aboutRouter = require('./app_server/routes/about');
 
-// Import app_api routes (API backend)
-const apiRouter = require('./app_api/routes/index');
+// Use API routes first (before error handlers)
+app.use('/api', apiRouter);
 
 // Use frontend routes
 app.use('/', indexRouter);
@@ -64,12 +77,21 @@ app.use('/news', newsRouter);
 app.use('/contact', contactRouter);
 app.use('/about', aboutRouter);
 
-// Use API routes
-app.use('/api', apiRouter); 
-
-// Add a health check endpoint
+// Health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'UP', message: 'Server is running smoothly.' });
+});
+
+// Error handling for unauthorized access
+app.use((err, req, res, next) => {
+  if (err.name === 'UnauthorizedError') {
+    console.log('Unauthorized error caught:', err.message);
+    return res.status(401).json({
+      message: 'Unauthorized access',
+      error: 'No authorization token was found'
+    });
+  }
+  next(err);
 });
 
 // Global error handler
@@ -82,3 +104,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+module.exports = app;
