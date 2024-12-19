@@ -19,7 +19,7 @@
     "express-jwt": "^8.5.1",
     "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.7.3",
+    "mongoose": "^8.9.1",
     "node-fetch": "^3.3.2",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
