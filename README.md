@@ -1,7 +1,7 @@
 # SNHU CS465 Full Stack Development Project
 
 ## Project Overview
-This project is a comprehensive full-stack web application developed as part of the CS465 course at Southern New Hampshire University. It demonstrates the implementation of a MEAN stack (MongoDB, Express.js, Angular, Node.js) application with both customer-facing and administrative interfaces.
+"Travlr Getaways: A MEAN stack full stack web application for a travel agency. This project is a comprehensive full-stack web application developed as part of the CS465 course at Southern New Hampshire University. It demonstrates the implementation of a MEAN stack (MongoDB, Express.js, Angular, Node.js) application with both customer-facing and administrative interfaces.
 
 ## Technical Stack
 - **Frontend**: 
